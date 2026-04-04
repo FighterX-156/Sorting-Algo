@@ -8,7 +8,7 @@ vector<int> generate(int size, int min_val = 0, int max_val = 100000)
     for (int i = 0; i < size; ++i)
     {
         int range = max_val - min_val + 1;    // 100000 -0+1
-        int num = min_val + (rand() % range); // rand() returns 0..RAND_MAX
+        int num = min_val + (rand() % range); 
         dataset.push_back(num);
     }
     return dataset;
@@ -24,7 +24,8 @@ void print(const vector<int> &data)
             cout << " "; // space between numbers
     }
     cout << "\n";
-    cout<<"Student ID: C243014 "<<endl<<"Student Name: Nafizur Rahman Seam"<<endl;
+    cout << "Student ID: C243014 \n"
+         << "Student Name: Nafizur Rahman Seam\n";
 }
 
 // Quick Sort
@@ -132,6 +133,9 @@ void sortselection(vector<int> &data, int size)
     int Sort;
     cin >> Sort;
 
+    // 1. Start the timer
+    auto start_time = chrono::high_resolution_clock::now();
+
     switch (Sort)
     {
     case 1:
@@ -147,7 +151,12 @@ void sortselection(vector<int> &data, int size)
         cout << "Invalid choice.\n";
         return;
     }
+
+    // end the timer
+    auto end_time = chrono::high_resolution_clock::now();
+    chrono::duration<double, std::milli> execution_time = end_time - start_time;
     print(data);
+    cout << "Execution Time: " << execution_time.count() << " ms\n";
 }
 
 int main()
